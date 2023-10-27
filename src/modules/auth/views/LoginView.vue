@@ -7,13 +7,14 @@
 
             <!-- Email -->
             <div class="my-5 text-left text-base md:text-lg text-gray-200 w-full">
-                <label class="font-semibold block" for="email">Email</label>
-                <input type="email"
-                    class="form-input focus:border-green-600 hover:border-green-600 active:border-green-600 px-4 py-3 rounded-lg bg-black placeholder-gray-300 w-full"
+                <label class="font-semibold block after:content-['*'] after:ml-0.5 after:text-red-500"
+                    for="email">Email</label>
+                <input type="email" id="email"
+                    class="form-input focus:border-green-600 hover:border-green-600 focus:ring-black active:border-green-600 px-4 py-3 rounded-lg bg-black placeholder-gray-300 w-full"
                     placeholder="Email" v-bind="email">
-                <span v-if="errors.email" class="text-red-400 mt-1 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                        class="w-7 h-7 fill-red-400 stroke-black stroke-2">
+                <span v-if="errors.email" class="text-red-400 mt-1 flex items-center"><svg
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-7 h-7 fill-red-400 stroke-black stroke-2">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                     </svg>
@@ -21,11 +22,12 @@
             </div>
             <!-- Password -->
             <div class="my-5 text-left text-base md:text-lg text-gray-200 w-full">
-                <label class="font-semibold block" for="password">Password</label>
+                <label class="font-semibold block after:content-['*'] after:ml-0.5 after:text-red-500"
+                    for="password">Password</label>
                 <div class="flex gap-2">
                     <input :type="type_field"
-                        class="form-input w-full focus:border-green-600 hover:border-green-600 active:border-green-600 px-4 py-3 rounded-lg bg-black placeholder-gray-300"
-                        placeholder="Password" name="password" v-bind="password" />
+                        class="form-input w-full focus:border-green-600 hover:border-green-600 focus:ring-black active:border-green-600 px-4 py-3 rounded-lg bg-black placeholder-gray-300"
+                        placeholder="Password" name="password" v-bind="password" id="password" />
                     <button type="button" @click="toggle_password_visibility"
                         class="flex justify-center px-3 hover:bg-green-700 bg-green-600 rounded-lg items-center">
                         <svg v-if="is_password_hide" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -41,7 +43,6 @@
                         </svg>
                     </button>
                 </div>
-
                 <span v-if="errors.password" class="text-red-400 mt-1 flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-7 h-7 fill-red-400 stroke-black stroke-2">
@@ -49,21 +50,49 @@
                             d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                     </svg>
                     {{ errors.password }}</span>
+                <template v-if="backend_errors">
+                    <span class="text-red-400 mt-1 flex items-center" v-for="error, index in backend_errors['password']"
+                        :key="index">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-7 h-7 fill-red-400 stroke-black stroke-2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>
+                        {{ error }}</span>
+                </template>
             </div>
+            <div class="my-5 text-left text-base flex items-center gap-2 md:text-lg text-gray-200 w-full">
+                <input type="checkbox"
+                    class="form-checkbox focus:ring-black checked:bg-green-600 hover:border-green-600 active:border-green-600 px-4 py-3 rounded-lg text-green-600 bg-black"
+                    v-model="remember_me" id="remember_me">
+                <label class="font-semibold  hover:text-green-600" for="remember_me">Recuerdame </label>
+            </div>
+            <template v-if="backend_errors">
+                    <span v-if="backend_errors['credentials']" class="text-red-400 mt-1 flex text-sm items-center" 
+                        :key="index">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-7 h-7 fill-red-400 stroke-black stroke-2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                        </svg>
+                        {{ backend_errors['credentials'] }}</span>
+                </template>
             <button type="submit"
                 class="bg-green-600 focus:bg-green-700 hover:bg-green-700 my-2 text-base md:text-lg border border-green-900 text-black font-semibold w-full rounded-full py-3">Iniciar
                 sesion</button>
         </form>
     </div>
     <div>
-        <p class="text-base my-5 md:text-lg"><span class="text-gray-500">¿No tienes una cuenta? <router-link class="text-white"
-                    :to="{ name: 'register' }">Registrate en spotify.</router-link></span></p>
+        <p class="text-base my-5 md:text-lg"><span class="text-gray-500">¿No tienes una cuenta? <router-link
+                    class="text-white" :to="{ name: 'register' }">Registrate en spotify.</router-link></span></p>
     </div>
 </template>
 <script>
 import { ref } from 'vue'
 import { useForm } from 'vee-validate';
 import * as yup from 'yup';
+
+import useAuth from '../composables/useAuth'
 
 export default {
     setup() {
@@ -74,28 +103,46 @@ export default {
             })
         })
 
+        const { signInUser } = useAuth()
+
         const email = defineInputBinds('email');
         const password = defineInputBinds('password');
+        const remember_me = ref(false);
+        const backend_errors = ref(null)
+
+
 
         const is_password_hide = ref(true)
         const type_field = ref('password')
+
+        const loginUser = async (user) => {
+            const { status, message } = await signInUser(user);
+            if (!status) {
+                backend_errors.value = message
+            }
+        }
         const onSubmit = handleSubmit(values => {
-            alert(JSON.stringify(values, null, 2));
+            const user = { ...values }
+            user.remember_me = remember_me.value
+            loginUser(user)
         });
 
         const toggle_password_visibility = () => {
             is_password_hide.value = !is_password_hide.value
             type_field.value = is_password_hide.value ? 'password' : 'text'
         }
+
         return {
+            backend_errors,
             email,
-            password,
-            values,
             errors,
             is_password_hide,
             onSubmit,
+            password,
+            remember_me,
             toggle_password_visibility,
-            type_field
+            type_field,
+            values,
         }
     }
 }

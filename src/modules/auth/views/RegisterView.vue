@@ -6,10 +6,10 @@
         <form @submit="onSubmit" novalidate>
             <div class="my-2 text-left text-base md:text-lg text-gray-200 w-full">
                 <!-- Name -->
-                <label class="font-semibold block" for="name">Name</label>
+                <label class="font-semibold block after:content-['*'] after:ml-0.5 after:text-red-500" for="name">Name</label>
                 <input input="text"
-                    class="form-input  focus:border-green-600 hover:border-green-600 active:border-green-600 px-4 py-3 rounded-lg bg-black placeholder-gray-300  w-full"
-                    placeholder="Name" name="name" v-bind="name" />
+                    class="form-input  focus:border-green-600 hover:border-green-600 focus:ring-black active:border-green-600 px-4 py-3 rounded-lg bg-black placeholder-gray-300  w-full"
+                    placeholder="Name" name="name" v-bind="name" id="name"/>
                 <span v-if="errors.name" class="text-red-400 mt-1 flex items-center"> <svg
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-7 h-7 fill-red-400 stroke-black stroke-2">
@@ -20,10 +20,10 @@
             </div>
             <!-- Email -->
             <div class="my-2 text-left text-base md:text-lg text-gray-200 w-full">
-                <label class="font-semibold block" for="email">Email</label>
+                <label class="font-semibold block after:content-['*'] after:ml-0.5 after:text-red-500" for="email">Email</label>
                 <input type="email"
-                    class="form-input focus:border-green-600 hover:border-green-600 active:border-green-600 px-4 py-3 rounded-lg bg-black placeholder-gray-300 w-full"
-                    placeholder="Email" v-bind="email">
+                    class="form-input focus:border-green-600 hover:border-green-600 focus:ring-black active:border-green-600 px-4 py-3 rounded-lg bg-black placeholder-gray-300 w-full"
+                    placeholder="Email" v-bind="email" id="email">
                 <span v-if="errors.email" class="text-red-400 mt-1 flex items-center"><svg
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-7 h-7 fill-red-400 stroke-black stroke-2">
@@ -34,11 +34,11 @@
             </div>
             <!-- Password -->
             <div class="my-2 text-left text-base md:text-lg text-gray-200 w-full">
-                <label class="font-semibold block" for="password">Password</label>
+                <label class="font-semibold block after:content-['*'] after:ml-0.5 after:text-red-500" for="password">Password</label>
                 <div class="flex gap-2">
                     <input :type="type_field"
-                        class="form-input w-full focus:border-green-600 hover:border-green-600 active:border-green-600 px-4 py-3 rounded-lg bg-black placeholder-gray-300"
-                        placeholder="Password" name="password" v-bind="password" />
+                        class="form-input w-full focus:border-green-600 hover:border-green-600 focus:ring-black active:border-green-600 px-4 py-3 rounded-lg bg-black placeholder-gray-300"
+                        placeholder="Password" name="password" v-bind="password" id="password"/>
                     <button type="button" @click="toggle_password_visibility"
                         class="px-3 flex justify-center hover:bg-green-700 bg-green-600 rounded-lg items-center">
                         <svg v-if="is_password_hide" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -75,10 +75,10 @@
             </div>
             <!-- password confirmation -->
             <div class="my-2 text-left text-base md:text-lg text-gray-200 w-full">
-                <label class="font-semibold block" for="password_confirmation">Confirm password</label>
+                <label class="font-semibold block after:content-['*'] after:ml-0.5 after:text-red-500" for="password_confirmation">Confirm password</label>
                 <input type="password"
-                    class="form-input focus:border-green-600 hover:border-green-600 active:border-green-600 px-4 py-3 rounded-lg bg-black placeholder-gray-300 w-full"
-                    placeholder="Repeat the password" name="password_confirmation" v-bind="password_confirmation" />
+                    class="form-input focus:border-green-600 hover:border-green-600 focus:ring-black active:border-green-600 px-4 py-3 rounded-lg bg-black placeholder-gray-300 w-full"
+                    placeholder="Repeat the password" id="password_confirmation" name="password_confirmation" v-bind="password_confirmation" />
                 <span v-if="errors.password_confirmation" class="text-red-400 mt-1 flex items-center"><svg
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-7 h-7 fill-red-400 stroke-black stroke-2">
@@ -89,10 +89,10 @@
             </div>
             <!-- Birth day -->
             <div class="my-2 text-left text-base md:text-lg text-gray-200 w-full">
-                <label class="font-semibold block" for="birth_day">Birth day</label>
+                <label class="font-semibold block after:content-['*'] after:ml-0.5 after:text-red-500" for="birth_day">Birth day</label>
                 <input type="date"
-                    class="form-input focus:border-green-600 hover:border-green-600 active:border-green-600 px-4 py-3 rounded-lg bg-black placeholder-gray-300 w-full"
-                    name="birth_day" v-bind="birth_day" />
+                    class="form-input focus:border-green-600 hover:border-green-600 focus:ring-black active:border-green-600 px-4 py-3 rounded-lg bg-black placeholder-gray-300 w-full"
+                    name="birth_day" v-bind="birth_day" id="birth_day"/>
                 <span v-if="errors.birth_day" class="text-red-400 mt-1 flex items-center"><svg
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-7 h-7 fill-red-400 stroke-black stroke-2">
@@ -132,7 +132,7 @@ export default {
         const { values, defineInputBinds, handleSubmit, errors } = useForm({
             validationSchema: yup.object({
                 name: yup.string().required(),
-                email: yup.string().email(),
+                email: yup.string().email().required(),
                 password: yup.string().required(),
                 password_confirmation: yup.string().required(),
                 birth_day: yup.date().required()
