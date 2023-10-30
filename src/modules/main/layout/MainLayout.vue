@@ -1,13 +1,12 @@
 <template>
-    <main class="bg-black p-3 grid grid-cols-4 grid-rows-6 gap-1 h-screen">
-        <section class="col-span-1 row-span-5">
-            <aside_component/>
+    <main class="bg-black grid grid-cols-5 p-3 grid-rows-5 lg:grid-rows-6 gap-3 h-screen">
+        <section class="col-span-1 row-span-4 lg:row-span-5 h-full">
+            <aside_component />
         </section>
-        <section class="col-span-3 row-span-5">
-            sdfgsdfg
+        <section class="col-span-4 row-span-4 lg:row-span-5 h-full">
             <router-view />
         </section >
-        <section class="col-span-4 row-span-1">
+        <section class="col-span-5 row-span-1">
             <footer_component />
         </section>
     </main>
@@ -23,4 +22,8 @@ export default {
 
 }
 </script>
-<style></style>
+<style scoped>
+    main{
+        min-width: 768px;
+    }
+</style>

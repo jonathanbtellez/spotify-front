@@ -93,15 +93,18 @@ import { useForm } from 'vee-validate';
 import * as yup from 'yup';
 
 import useAuth from '../composables/useAuth'
+import { useRouter } from 'vue-router';
 
 export default {
     setup() {
+        const router = useRouter()
         const { values, defineInputBinds, handleSubmit, errors } = useForm({
             validationSchema: yup.object({
                 email: yup.string().email().required(),
                 password: yup.string().required(),
             })
         })
+
 
         const { signInUser } = useAuth()
 
@@ -119,7 +122,10 @@ export default {
             const { status, message } = await signInUser(user);
             if (!status) {
                 backend_errors.value = message
+                return
             }
+
+            router.push({name: 'main'})
         }
         const onSubmit = handleSubmit(values => {
             const user = { ...values }

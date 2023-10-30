@@ -1,16 +1,18 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import AuthRouter from '@/modules/auth/router'
 import MainRouter from '@/modules/main/router'
-
+import isAuthenticatedGuard from './auth-guard'
 
 const routes = [
   {
-    path: "/auth",
-    ...AuthRouter,
+
+    path: "/",
+    beforeEnter: [isAuthenticatedGuard],
+    ...MainRouter,
   },
   {
-    path: "/main",
-    ...MainRouter,
+    path: "/auth",
+    ...AuthRouter,
   },
 ]
 

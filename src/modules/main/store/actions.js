@@ -32,30 +32,30 @@ export const signInUser = async ({ commit }, userInfo) => {
     }
 }
 
-// export const checkAuthentication = async ({ commit }) => {
-//     const token = localStorage.getItem('token')
+export const checkAuthentication = async ({ commit }) => {
+    const token = localStorage.getItem('token')
 
-//     if (!token) {
-//         commit('logout')
-//         return { status: false, message: 'There is not token in the request' }
-//     }
+    if (!token) {
+        commit('logout')
+        return { status: false, message: 'There is not token in the request' }
+    }
 
-//     try {
-//         const { data } = await AuthApi.post('/user', { token })
-//         const { displayName, email } = data.users[0]
+    try {
+        const { data } = await AuthApi.post('/login', { token })
+        const { name, email } = data.users
 
-//         const user = {
-//             name: displayName,
-//             email
-//         }
+        const user = {
+            name,
+            email
+        }
 
-//         commit('loginUser', { user, token })
+        commit('loginUser', { user, token })
 
-//         return { status: true }
+        return { status: true }
 
-//     } catch (error) {
-//         commit('logout')
-//         return { status: false, message: error.response.data.error.message }
-//     }
+    } catch (error) {
+        commit('logout')
+        return { status: false, message: error.response.data.error.message }
+    }
 
-// }
+}

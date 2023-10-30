@@ -2,17 +2,17 @@ export default {
     name: "main",
     component: () =>
         import(
-             /* webpackChunkName: 'Auth layout' */ "@/modules/main/layout/MainLayout.vue"
+             /* webpackChunkName: 'main layout' */ "@/modules/main/layout/MainLayout.vue"
         ),
     children: [
-        // {
-        //     path: "",
-        //     name: "login",
-        //     component: () =>
-        //         import(
-        //         /* webpackChunkName: 'login view' */ "@/modules/auth/views/LoginView.vue"
-        //         ),
-        // },
+        {
+            path: "",
+            name: "main",
+            component: () =>
+                import(
+                /* webpackChunkName: 'main view' */ "@/modules/main/views/MainView.vue"
+                ),
+        },
         // {
         //     path: "register",
         //     name: "register",

@@ -13,22 +13,20 @@ const useAuth = () => {
         return resp
     }
 
-    //   const checkAuthentication = async () => {
-    //     const resp = await store.dispatch('auth/checkAuthentication')
-    //     return resp
-    //   }
+    const checkAuthentication = async () => {
+        const resp = await store.dispatch('auth/checkAuthentication')
+        return resp
+    }
 
-    //   const logOut = () => {
-    //     console.log('salir')
-    //     store.commit('auth/logout')
-    //     store.commit('journal/clearEntries')
-    //   }
+    const logOut = () => {
+        store.commit('auth/logout')
+    }
 
     return {
         authStatus: computed(() => store.getters['auth/currentState']),
         userName: computed(() => store.getters['auth/userName']),
-        // logOut,
-        // checkAuthentication,
+        logOut,
+        checkAuthentication,
         createUser,
         signInUser,
     };

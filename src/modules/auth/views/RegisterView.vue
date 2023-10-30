@@ -125,10 +125,10 @@ import { ref } from 'vue'
 import { useForm } from 'vee-validate';
 import * as yup from 'yup';
 import useAuth from '../composables/useAuth'
+import { useRouter } from 'vue-router';
 export default {
     setup() {
-
-        const { createUser } = useAuth()
+        const router = useRouter()
         const { values, defineInputBinds, handleSubmit, errors } = useForm({
             validationSchema: yup.object({
                 name: yup.string().required(),
@@ -138,6 +138,8 @@ export default {
                 birth_day: yup.date().required()
             })
         })
+
+        const { createUser } = useAuth()
 
         const birth_day = defineInputBinds('birth_day');
         const email = defineInputBinds('email');
@@ -155,6 +157,7 @@ export default {
             if (!status) {
                 backend_errors.value = message
             }
+            router.push({name: 'main'})
         }
 
 
