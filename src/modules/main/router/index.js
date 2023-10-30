@@ -7,7 +7,7 @@ export default {
     children: [
         {
             path: "",
-            name: "main",
+            name: "home",
             component: () =>
                 import(
                 /* webpackChunkName: 'main view' */ "@/modules/main/views/MainView.vue"

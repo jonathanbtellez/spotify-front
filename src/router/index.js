@@ -6,7 +6,7 @@ import isAuthenticatedGuard from './auth-guard'
 const routes = [
   {
 
-    path: "/",
+    path: "",
     beforeEnter: [isAuthenticatedGuard],
     ...MainRouter,
   },

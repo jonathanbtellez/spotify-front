@@ -125,7 +125,7 @@ export default {
                 return
             }
 
-            router.push({name: 'main'})
+            router.push({name: 'home'})
         }
         const onSubmit = handleSubmit(values => {
             const user = { ...values }

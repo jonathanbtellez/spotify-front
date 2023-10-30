@@ -157,7 +157,7 @@ export default {
             if (!status) {
                 backend_errors.value = message
             }
-            router.push({name: 'main'})
+            router.push({name: 'home'})
         }
 
 
