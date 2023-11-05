@@ -3,7 +3,7 @@
         <section class="col-span-1 row-span-4 lg:row-span-5 h-full">
             <aside_component />
         </section>
-        <section class="col-span-4 rounded-xl bg-red-900 row-span-4 lg:row-span-5 h-full">
+        <section class="bg-neutral-900 col-span-4 rounded-xl row-span-4 lg:row-span-5 h-full hover:overflow-auto overflow-hidden scroll-auto scrollbar scrollbar-thumb-white scrollbar-track-transparent">
             <nav-component />
             <router-view />
         </section>

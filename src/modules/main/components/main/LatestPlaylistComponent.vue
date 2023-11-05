@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2 class="font-extrabold text-4xl text-neutral-300 text-left px-4">¡{{ greet() +' '+ userName }}!</h2>
+        <h2 class="font-extrabold text-4xl text-white text-left px-4">¡{{ greet() +' '+ userName }}!</h2>
     </div>
     <div class="grid md:grid-cols-2 gap-5 lg:grid-cols-3 p-4 mt-4">
         <div class="flex rounded-lg bg-neutral-300 hover:bg-opacity-30 bg-opacity-20 w-full group" v-for="item, index in lists" :key="index">

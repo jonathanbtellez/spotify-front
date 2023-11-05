@@ -1,7 +1,13 @@
 <template>
-    <latest-playlist-component/>
-    <div class="w-full bg-black"></div>
-    <cards-container-component/>
+    <div class="bg-red-900">
+        <latest-playlist-component/>
+    </div>
+    <div class="w-full bg-neutral-900 mb-3">
+        <cards-container-component title="Hechos para "/>
+        <cards-container-component title="Hechos para "/>
+        <cards-container-component title="Hechos para "/>
+        <cards-container-component title="Hechos para "/>
+    </div>
 </template>
 <script>
 import { defineAsyncComponent } from 'vue'
