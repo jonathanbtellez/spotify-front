@@ -3,59 +3,59 @@
 // export const myActions = async ({commit})=>{
 // }
 
-import AuthApi from "@/api/AuthApi";
+// import AuthApi from "@/api/AuthApi";
 
-export const createUser = async ({ commit }, newUser) => {
-    try {
-        const { data } = await AuthApi.post('/register', newUser)
-        const { token, user } = data
-        delete user.password
-        commit('loginUser', { user, token })
-        return { status: true }
-    } catch (error) {
-        return { status: false, message: error.response.data.errors }
-    }
-}
+// export const createUser = async ({ commit }, newUser) => {
+//     try {
+//         const { data } = await AuthApi.post('/register', newUser)
+//         const { token, user } = data
+//         delete user.password
+//         commit('loginUser', { user, token })
+//         return { status: true }
+//     } catch (error) {
+//         return { status: false, message: error.response.data.errors }
+//     }
+// }
 
-export const signInUser = async ({ commit }, userInfo) => {
-    try {
-        const { data } = await AuthApi.post('/login', userInfo)
+// export const signInUser = async ({ commit }, userInfo) => {
+//     try {
+//         const { data } = await AuthApi.post('/login', userInfo)
 
-        const { token, user } = data
+//         const { token, user } = data
 
-        commit('loginUser', { user, token })
+//         commit('loginUser', { user, token })
 
-        return { status: true }
+//         return { status: true }
 
-    } catch (error) {
-        return { status: false, message: error.response.data.errors }
-    }
-}
+//     } catch (error) {
+//         return { status: false, message: error.response.data.errors }
+//     }
+// }
 
-export const checkAuthentication = async ({ commit }) => {
-    const token = localStorage.getItem('token')
+// export const checkAuthentication = async ({ commit }) => {
+//     const token = localStorage.getItem('token')
 
-    if (!token) {
-        commit('logout')
-        return { status: false, message: 'There is not token in the request' }
-    }
+//     if (!token) {
+//         commit('logout')
+//         return { status: false, message: 'There is not token in the request' }
+//     }
 
-    try {
-        const { data } = await AuthApi.post('/login', { token })
-        const { name, email } = data.users
+//     try {
+//         const { data } = await AuthApi.post('/login', { token })
+//         const { name, email } = data.users
 
-        const user = {
-            name,
-            email
-        }
+//         const user = {
+//             name,
+//             email
+//         }
 
-        commit('loginUser', { user, token })
+//         commit('loginUser', { user, token })
 
-        return { status: true }
+//         return { status: true }
 
-    } catch (error) {
-        commit('logout')
-        return { status: false, message: error.response.data.error.message }
-    }
+//     } catch (error) {
+//         commit('logout')
+//         return { status: false, message: error.response.data.error.message }
+//     }
 
-}
+// }

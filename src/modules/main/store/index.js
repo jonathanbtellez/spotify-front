@@ -3,7 +3,7 @@ import * as getters from "./getters";
 import * as actions from "./actions";
 import * as mutations from "./mutations";
 
-const AuthModule = {
+const MainModule = {
     namespaced: true,
     state,
     getters,
@@ -11,4 +11,4 @@ const AuthModule = {
     mutations,
 };
 
-export default AuthModule;
+export default MainModule;

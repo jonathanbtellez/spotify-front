@@ -4,10 +4,6 @@
 // return state
 // }
 
-export const currentState = (state) => {
-    return state.status
-}
-
-export const userName = (state) => {
-    return state.user?.name || 'guest'
+export const get_color_background = (state) => {
+    return state.color_background
 }

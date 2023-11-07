@@ -17,52 +17,15 @@ export default {
     props: {
         title: {
             type: String
+        },
+        lists: {
+            type: Array
         }
     },
     setup() {
         const { userName } = useAuth()
 
-        const lists = [
-            {
-                name: 'List',
-                image: 'https://render.fineartamerica.com/images/rendered/default/flat/blanket/images/artworkimages/medium/3/sky-in-flames-jules-photography.jpg?&targetx=-86&targety=-5&imagewidth=1420&imageheight=800&modelwidth=952&modelheight=800&backgroundcolor=000000&orientation=1&producttype=blanket-coral-50-60',
-                list: [],
-                artists: ['in flames', 'Breaking benjamin', 'Dark tranquility']
-            },
-            {
-                name: 'List',
-                image: 'https://render.fineartamerica.com/images/rendered/default/flat/blanket/images/artworkimages/medium/3/sky-in-flames-jules-photography.jpg?&targetx=-86&targety=-5&imagewidth=1420&imageheight=800&modelwidth=952&modelheight=800&backgroundcolor=000000&orientation=1&producttype=blanket-coral-50-60',
-                list: [],
-                artists: ['in flames', 'Breaking benjamin', 'Dark tranquility']
-            },
-            {
-                name: 'List',
-                image: 'https://render.fineartamerica.com/images/rendered/default/flat/blanket/images/artworkimages/medium/3/sky-in-flames-jules-photography.jpg?&targetx=-86&targety=-5&imagewidth=1420&imageheight=800&modelwidth=952&modelheight=800&backgroundcolor=000000&orientation=1&producttype=blanket-coral-50-60',
-                list: [],
-                artists: ['in flames', 'Breaking benjamin', 'Dark tranquility']
-            },
-            {
-                name: 'List',
-                image: 'https://render.fineartamerica.com/images/rendered/default/flat/blanket/images/artworkimages/medium/3/sky-in-flames-jules-photography.jpg?&targetx=-86&targety=-5&imagewidth=1420&imageheight=800&modelwidth=952&modelheight=800&backgroundcolor=000000&orientation=1&producttype=blanket-coral-50-60',
-                list: [],
-                artists: ['in flames', 'Breaking benjamin', 'Dark tranquility']
-            },
-            {
-                name: 'List',
-                image: 'https://render.fineartamerica.com/images/rendered/default/flat/blanket/images/artworkimages/medium/3/sky-in-flames-jules-photography.jpg?&targetx=-86&targety=-5&imagewidth=1420&imageheight=800&modelwidth=952&modelheight=800&backgroundcolor=000000&orientation=1&producttype=blanket-coral-50-60',
-                list: [],
-                artists: ['in flames', 'Breaking benjamin', 'Dark tranquility']
-            },
-            {
-                name: 'List',
-                image: 'https://render.fineartamerica.com/images/rendered/default/flat/blanket/images/artworkimages/medium/3/sky-in-flames-jules-photography.jpg?&targetx=-86&targety=-5&imagewidth=1420&imageheight=800&modelwidth=952&modelheight=800&backgroundcolor=000000&orientation=1&producttype=blanket-coral-50-60',
-                list: [],
-                artists: ['in flames', 'Breaking benjamin', 'Dark tranquility']
-            }
-        ]
-
         return {
-            lists,
             userName
         }
     }

@@ -3,7 +3,8 @@
         <section class="col-span-1 row-span-4 lg:row-span-5 h-full">
             <aside_component />
         </section>
-        <section class="bg-neutral-900 col-span-4 rounded-xl row-span-4 lg:row-span-5 h-full hover:overflow-auto overflow-hidden scroll-auto scrollbar scrollbar-thumb-white scrollbar-track-transparent">
+        <section
+            class=" col-span-4 rounded-xl row-span-4 lg:row-span-5 h-full hover:overflow-y-auto overflow-hidden scroll-auto scrollbar-thumb-white scrollbar-track-transparent scrollbar-thin">
             <nav-component />
             <router-view />
         </section>
@@ -14,13 +15,13 @@
 </template>
 <script>
 import { defineAsyncComponent } from 'vue'
+
 export default {
     components: {
         'aside_component': defineAsyncComponent(() => import(/* webpackChunkName: 'aside component' */'../components/aside/AsideComponent.vue')),
         'footer_component': defineAsyncComponent(() => import(/* webpackChunkName: 'footer component' */'../components/footer/FooterComponent.vue')),
-        'nav-component': defineAsyncComponent(()=> import(/* webpackChunkName: 'nav component' */'../components/main/NavComponent.vue')),
-    }
-
+        'nav-component': defineAsyncComponent(() => import(/* webpackChunkName: 'nav component' */'../components/main/NavComponent.vue')),
+    },
 }
 </script>
 <style scoped>

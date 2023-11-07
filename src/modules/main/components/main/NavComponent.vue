@@ -1,5 +1,5 @@
 <template >
-    <div>
+    <div class="sticky top-0" :style="{ 'background-color': get_bg_color }">
         <nav class="p-0 m-0">
             <div class="w-full p-3 flex justify-between">
                 <div class="flex gap-2">
@@ -47,16 +47,19 @@
 </template>
 <script>
 import useAuth from '@/modules/auth/composables/useAuth'
+import useMain from '@/modules/main/composables/useMain';
 import { useRouter } from 'vue-router'
 export default {
     setup() {
         const router = useRouter()
 
         const { authStatus, logOut } = useAuth()
+        const {get_bg_color} = useMain()
 
 
         return {
             authStatus,
+            get_bg_color,
             on_logout: () => {
                 logOut()
                 router.push({ name: 'login' })
