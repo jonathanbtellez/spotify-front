@@ -1,13 +1,13 @@
 <template>
     <div class="text-left p-4 text-xl text-white font-semibold">
-        <h3>{{ title + userName }}</h3>
+        <h3>{{ title +' '+userName }}</h3>
     </div>
     <div class="flex px-4 w-full gap-5">
-        <card-component v-for="list, index in lists" :key="index" :list="list" class="w-1/6 bg-neutral-800"/>
+        <card-component v-for="list, index in limitList(lists)" :key="index" :list="list" class="w-1/6 bg-neutral-800" />
     </div>
 </template>
 <script>
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent, ref } from 'vue';
 import useAuth from '@/modules/auth/composables/useAuth';
 
 export default {
@@ -25,9 +25,16 @@ export default {
     setup() {
         const { userName } = useAuth()
 
+        const lists = ref()
         return {
-            userName
+            userName,
+            limitList : (list)=> { 
+                lists.value = list
+                lists.value.splice(6)
+                return lists.value
+            }
         }
+    
     }
 }
 </script>

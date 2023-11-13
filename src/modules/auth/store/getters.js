@@ -8,6 +8,10 @@ export const currentState = (state) => {
     return state.status
 }
 
+export const currentToken = (state) => {
+    return state.token
+}
+
 export const userName = (state) => {
     return state.user?.name || 'guest'
 }

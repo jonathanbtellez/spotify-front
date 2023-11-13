@@ -111,8 +111,9 @@
                         {{ error }}</span>
                 </template>
             </div>
-            <button type="submit"
-                class="bg-green-600 focus:bg-green-700 hover:bg-green-700 my-2 text-base md:text-lg border border-green-900 text-black font-semibold w-full rounded-full py-3">Registrame</button>
+            <button type="submit" :disabled="is_loading"
+            :class="is_loading ? 'bg-gray-200' : 'bg-green-600 focus:bg-green-700 hover:bg-green-700'"
+                class="y-2 text-base md:text-lg border border-green-900 text-black font-semibold w-full rounded-full py-3">Registrame</button>
         </form>
     </div>
     <div>
@@ -151,11 +152,15 @@ export default {
         const is_password_hide = ref(true)
         const type_field = ref('password')
         const userValidated = ref({})
+        const is_loading = ref(false)
 
         const registerUser = async (user) => {
+            is_loading.value = true
             const { status, message } = await createUser(user)
+            is_loading.value = true
             if (!status) {
                 backend_errors.value = message
+                return
             }
             router.push({name: 'home'})
         }
@@ -178,6 +183,7 @@ export default {
             values,
             errors,
             password_confirmation,
+            is_loading,
             is_password_hide,
             onSubmit,
             toggle_password_visibility,

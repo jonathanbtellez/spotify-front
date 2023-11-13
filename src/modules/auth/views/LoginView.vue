@@ -3,7 +3,7 @@
         <h2 class="font-black text-4xl md:text-5xl  text-left">Inicia sesion en spotify</h2>
     </div>
     <div class="grid grid-cols-1">
-        <form @submit="onSubmit" novalidate>
+        <form @submit="on_submit" novalidate>
 
             <!-- Email -->
             <div class="my-5 text-left text-base md:text-lg text-gray-200 w-full">
@@ -68,17 +68,16 @@
                 <label class="font-semibold  hover:text-green-600" for="remember_me">Recuerdame </label>
             </div>
             <template v-if="backend_errors">
-                    <span v-if="backend_errors['credentials']" class="text-red-400 mt-1 flex text-sm items-center" 
-                        :key="index">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-7 h-7 fill-red-400 stroke-black stroke-2">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
-                        </svg>
-                        {{ backend_errors['credentials'] }}</span>
-                </template>
-            <button type="submit"
-                class="bg-green-600 focus:bg-green-700 hover:bg-green-700 my-2 text-base md:text-lg border border-green-900 text-black font-semibold w-full rounded-full py-3">Iniciar
+                <span v-if="backend_errors['credentials']" class="text-red-400 mt-1 flex text-sm items-center" :key="index">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-7 h-7 fill-red-400 stroke-black stroke-2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                    </svg>
+                    {{ backend_errors['credentials'] }}</span>
+            </template>
+            <button type="submit" :disabled="is_loading" :class="is_loading ? 'bg-gray-200' : 'bg-green-600 focus:bg-green-700 hover:bg-green-700'"
+                class="  my-2 text-base md:text-lg border border-green-900 text-black font-semibold w-full rounded-full py-3">Iniciar
                 sesion</button>
         </form>
     </div>
@@ -88,7 +87,7 @@
     </div>
 </template>
 <script>
-import { ref } from 'vue'
+import { ref } from 'vue';
 import { useForm } from 'vee-validate';
 import * as yup from 'yup';
 
@@ -118,16 +117,19 @@ export default {
         const is_password_hide = ref(true)
         const type_field = ref('password')
 
+        const is_loading = ref(false)
+
         const loginUser = async (user) => {
+            is_loading.value = true
             const { status, message } = await signInUser(user);
+            is_loading.value = false
             if (!status) {
                 backend_errors.value = message
                 return
             }
-
-            router.push({name: 'home'})
+            router.push({ name: 'home' })
         }
-        const onSubmit = handleSubmit(values => {
+        const on_submit = handleSubmit(values => {
             const user = { ...values }
             user.remember_me = remember_me.value
             loginUser(user)
@@ -142,8 +144,9 @@ export default {
             backend_errors,
             email,
             errors,
+            is_loading,
             is_password_hide,
-            onSubmit,
+            on_submit,
             password,
             remember_me,
             toggle_password_visibility,

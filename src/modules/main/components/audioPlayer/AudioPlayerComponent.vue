@@ -22,7 +22,7 @@
             <div class="flex justify-center flex-col gap-5">
                 <div class="flex gap-6 justify-center">
                     <audio ref="audio" @loadeddata="get_file_data" @ended="on_ended" @timeupdate="get_file_data">
-                        <source src="../../../../assets/default.mp3" type="audio/mpeg">
+                        <source src="#" type="audio/mpeg">
                         Your browser does not support the audio tag.
                     </audio>
                     <button>

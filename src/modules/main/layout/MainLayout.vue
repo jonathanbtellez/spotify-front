@@ -4,7 +4,7 @@
             <aside_component />
         </section>
         <section
-            class=" col-span-4 rounded-xl row-span-4 lg:row-span-5 h-full hover:overflow-y-auto overflow-hidden scroll-auto scrollbar-thumb-white scrollbar-track-transparent scrollbar-thin">
+            class=" col-span-4 rounded-xl row-span-4 lg:row-span-5 h-full hover:overflow-y-auto overflow-hidden scroll-auto scrollbar-thumb-white scrollbar-track-transparent scrollbar-thin py-4">
             <nav-component />
             <router-view />
         </section>

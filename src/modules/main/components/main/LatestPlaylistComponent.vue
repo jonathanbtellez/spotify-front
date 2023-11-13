@@ -83,9 +83,7 @@ export default {
         }
 
         const get_color = ( color ) => {
-            console.log(color)
             set_bg_color(color)
-
         }
 
         return {
