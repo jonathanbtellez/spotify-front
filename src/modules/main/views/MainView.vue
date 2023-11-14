@@ -2,7 +2,7 @@
     <div :style="{ background: gradient }">
         <latest-playlist-component />
     </div>
-    <div class="w-full bg-neutral-900 mb-3">
+    <div class="w-full bg-neutral-900 pb-3">
         <template v-for="playlist in playlists" :key="playlist.id">
             <cards-container-component :title="playlist.name" :lists="playlist.tracks.slice(5)" />
         </template>
@@ -28,7 +28,6 @@ export default {
         const { userToken } = useAuth()
 
         const playlists = ref({})
-
         onMounted(async () => {
             const {data} = await MainApi.get('/playlist', {
                 headers: {
@@ -43,7 +42,7 @@ export default {
         return {
             playlists,
             userToken,
-            gradient: computed(() => 'linear-gradient(' + get_bg_color.value + ', #171717 )')
+            gradient: computed(() => 'linear-gradient(' + get_bg_color.value + ', #171717 )'),
         }
     }
 
