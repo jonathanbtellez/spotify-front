@@ -1,16 +1,16 @@
 <template>
-    <main class="bg-black grid grid-cols-5 p-3 grid-rows-5 lg:grid-rows-6 gap-3 h-screen">
-        <section class="col-span-1 row-span-4 lg:row-span-5 h-full">
+    <main class="bg-black grid grid-cols-5 grid-rows-5 p-3 gap-3 h-screen">
+        <section class="row-span-4 h-full">
             <aside_component />
         </section>
         <section
-            class=" col-span-4 rounded-xl row-span-4 lg:row-span-5 h-full hover:overflow-y-auto overflow-hidden scroll-auto scrollbar-thumb-white scrollbar-track-transparent scrollbar-thin">
+            class=" col-span-4 rounded-xl row-span-4 lg:row-span-5 hover:overflow-y-auto overflow-hidden scroll-auto scrollbar-thumb-white scrollbar-track-transparent scrollbar-thin">
             <nav-component />
             <router-view />
         </section>
-        <section class="col-span-5 row-span-1">
+        <footer class="col-span-5 row-span-1 bg-black">
             <footer_component />
-        </section>
+        </footer>
     </main>
 </template>
 <script>
