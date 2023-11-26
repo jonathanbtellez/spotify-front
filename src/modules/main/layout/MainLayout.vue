@@ -1,6 +1,6 @@
 <template>
-    <main class="bg-black grid grid-cols-5 grid-rows-5 p-3 gap-3 h-screen">
-        <section class="row-span-4 h-full">
+    <main class="bg-black grid grid-cols-5 grid-rows-5 lg:row-span-6 p-3 gap-3 h-screen">
+        <section class="row-span-4 lg:row-span-5">
             <aside_component />
         </section>
         <section

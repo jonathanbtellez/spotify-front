@@ -1,7 +1,6 @@
 <template >
-    <div class="space-y-3 h-full">
-        <section
-            class="bg-neutral-900 rounded-xl flex flex-col align-items font-extrabold gap-4 text-neutral-400 p-4">
+    <div class="h-full flex flex-col align-items divide-y-4 divide-black font-extrabold text-neutral-400">
+        <div class="bg-neutral-900 rounded-xl p-4">
             <item_component title="Inicio">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6 stroke-2">
@@ -16,11 +15,10 @@
                         d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                 </svg>
             </item_component>
-
-        </section>
-        <section class="bg-neutral-900 rounded-xl text-neutral-400 p-4 h-full">
+        </div>
+        <div class="bg-neutral-900 rounded-xl p-4 h-full">
             <search_component />
-        </section>
+        </div>
     </div>
 </template>
 <script>
