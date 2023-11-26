@@ -1,10 +1,12 @@
 <template >
-    <div class="p-3 rounded-lg text-white text-left">
-        <div class="w-full rounded-lg flex justify-center group">
+    <div class="p-3 rounded-lg text-white text-left group">
+        <div class="w-full rounded-lg flex flex-col justify-center">
             <div class="loader text-center my-6 h-5" v-if="is_loading"></div>
             <img :src="urlImage" alt="list image" class="rounded-lg " v-else>
+        </div>
+        <div class="relative">
             <button
-                class="transition ease-in-out delay-150 bg-green-600 rounded-full p-2 invisible group-hover:visible hover:bg-green-500 hover:scale-105 shadow-lg">
+                class="absolute group-hover:transition-opaciy group-hover:-translate-y-8 right-0  group-hover:ease-in-out duration-300 bg-green-600 opacity-0 group-hover:opacity-100 rounded-full p-2 invisible group-hover:visible hover:bg-green-500 hover:scale-105 shadow-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                     class="w-6 h-6 stroke-2 fill-black">
                     <path fill-rule="evenodd"
@@ -12,8 +14,6 @@
                         clip-rule="evenodd" />
                 </svg>
             </button>
-        </div>
-        <div>
             <h3 class=" py-2 ">{{ list.name }}</h3>
         </div>
     </div>

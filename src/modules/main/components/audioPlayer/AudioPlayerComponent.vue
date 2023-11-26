@@ -41,13 +41,13 @@
                     </button>
                     <button @click="on_reproduce" class="bg-white hover:bg-neutral-300 rounded-full p-2">
                         <svg v-if="!is_reproducing" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                            fill="currentColor" class="w-7 h-7 hover:stroke-green-600 stroke-2 fill-black">
+                            fill="currentColor" class="w-7 h-7 stroke-2 fill-black">
                             <path fill-rule="evenodd"
                                 d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
                                 clip-rule="evenodd" />
                         </svg>
                         <svg v-else xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                            class="w-7 h-7 hover:stroke-green-600 stroke-2 fill-black stroke-black">
+                            class="w-7 h-7 stroke-2 fill-black stroke-black">
                             <path fill-rule="evenodd"
                                 d="M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0A.75.75 0 0115 4.5h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H15a.75.75 0 01-.75-.75V5.25z"
                                 clip-rule="evenodd" />
@@ -81,7 +81,7 @@
                     </div>
                     <div v-else>
                         <input
-                            class="w-full accent-green-600 h-2 rounded-full bg-neutral-600 text-green-600 caret-green-600"
+                            class="w-full accent-green-600 h-2 cursor-pointer rounded-full bg-neutral-600 text-green-600 caret-green-600"
                             type="range" @click="on_change_progress_value('time', $event)" min=0 :max="duration"
                             :value="last_file_progress" />
                     </div>
@@ -90,27 +90,27 @@
             </div>
         </div>
         <div class="w-1/3 flex flex-row items-center justify-end gap-5">
-            <div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            <button><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-7 h-7 hover:stroke-green-600 stroke-2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
                 </svg>
-            </div>
-            <div>
+            </button>
+            <button>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-7 h-7 hover:stroke-green-600 stroke-2">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
                 </svg>
-            </div>
-            <div>
+            </button>
+            <button>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-7 h-7 hover:stroke-green-600 stroke-2">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
                 </svg>
-            </div>
+            </button>
             <div class="items-center flex gap-3">
                 <button @click="on_toggle_volume(0)" v-if="volume > 0">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -135,7 +135,7 @@
                         </div>
                         <div v-else>
                             <input
-                                class="w-full accent-green-600 h-2 rounded-full bg-neutral-600 text-green-600 caret-green-600"
+                                class="w-full accent-green-600 h-2 rounded-full cursor-pointer bg-neutral-600 text-green-600 caret-green-600"
                                 type="range" @click="on_change_progress_value('volume', $event)" min=0 max=100
                                 :value="volume" step=1 />
                         </div>
