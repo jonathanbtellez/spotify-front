@@ -15,6 +15,7 @@
                 </svg>
             </button>
             <h3 class=" py-2 ">{{ list.name }}</h3>
+            <p class="text-sm text-neutral-400">{{ list.description }}</p>
         </div>
     </div>
 </template>
@@ -48,7 +49,7 @@ export default {
 
         return {
             urlImage,
-            is_loading
+            is_loading,
         }
     }
 }

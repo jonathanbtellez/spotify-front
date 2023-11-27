@@ -4,7 +4,9 @@
     </div>
     <div class="w-full bg-neutral-900 pb-3">
         <template v-for="playlist in playlists" :key="playlist.id">
-            <cards-container-component :title="playlist.name" :lists="playlist.tracks.slice(5)" />
+            <template v-if="playlist.playlist.length > 0">
+                <cards-container-component :title="playlist.name"  :lists="playlist.playlist"/>
+            </template>
         </template>
     </div>
 </template>
@@ -29,6 +31,10 @@ export default {
 
         const playlists = ref({})
         onMounted(async () => {
+            getPlaylist()
+        })
+
+        const getPlaylist = async () => {
             const {data} = await MainApi.get('/playlist', {
                 headers: {
                     "Accept": 'application/json',
@@ -36,8 +42,8 @@ export default {
                     'Authorization': `Bearer ${userToken.value}`
                 }
             })
-            playlists.value = data            
-        })
+            playlists.value = data  
+        }
 
         return {
             playlists,
