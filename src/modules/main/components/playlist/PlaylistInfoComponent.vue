@@ -7,9 +7,10 @@
             <p class="text-white text-sm mt-10">Lista</p>
             <h3 class="text-5xl text-white font-bold">{{ transformTitle(playlist.name) }}</h3>
             <div class="w-100">
-                <p class="text-white text-sm w-100" >
-                    <template v-for="(artist, index) in getArtists" :key="artist.id" >        
-                        <span  class="hover:underline hover:underline-offset-2 cursor-pointer">{{artist.album.artist.name}} </span> {{ index == 0 ? ',' : ''}} {{ index == 1 ? ' y ' : '' }}
+                <p class="text-white text-sm w-100">
+                    <template v-for="(artist, index) in getArtists" :key="artist.id">
+                        <span class="hover:underline hover:underline-offset-2 cursor-pointer">{{ artist.album.artist.name }}
+                        </span> {{ index == 0 ? ',' : '' }} {{ index == 1 ? ' y ' : '' }}
                     </template>
                 </p>
                 <div class="mt-2 flex gap-2">
@@ -17,8 +18,8 @@
                         <img src="https://i.scdn.co/image/ab67757000003b8255c25988a6ac314394d3fbf5" class="rounded-full">
                     </div>
                     <div class="text-white text-sm">
-                        <span class="font-bold hover:underline hover:underline-offset-2 cursor-pointer" >Spotify</span> •
-                        <span class="font-medium" >{{ playlist.tracks.length }} canciones</span>
+                        <span class="font-bold hover:underline hover:underline-offset-2 cursor-pointer">Spotify</span> •
+                        <span class="font-medium">{{ playlist.tracks.length }} canciones</span>
                     </div>
                 </div>
             </div>
@@ -39,7 +40,7 @@ const props = defineProps({
 const getArtists = computed(() => {
     let artists = []
     let endValue = 3
-    while(artists.length < 3){
+    while (artists.length < 3) {
         const artistsList = props.playlist.tracks.slice(0, endValue)
         artists = new Set(artistsList)
         endValue++
