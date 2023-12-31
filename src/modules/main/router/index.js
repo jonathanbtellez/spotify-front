@@ -13,13 +13,14 @@ export default {
                 /* webpackChunkName: 'main view' */ "@/modules/main/views/MainView.vue"
                 ),
         },
-        // {
-        //     path: "register",
-        //     name: "register",
-        //     component: () =>
-        //         import(
-        //         /* webpackChunkName: 'register view' */ "@/modules/auth/views/RegisterView.vue"
-        //         ),
-        // },
+        {
+            path: "playlist/:id",
+            name: "showPlaylist",
+            component: () =>
+                import(
+                    /* webpackChunkName: 'playlist view' */ "@/modules/main/views/PlaylistView.vue"
+                ),
+            props: route => ({ idPlaylist: route.params.id })
+        },
     ]
 }

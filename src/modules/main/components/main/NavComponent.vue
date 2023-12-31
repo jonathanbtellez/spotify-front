@@ -1,5 +1,5 @@
 <template >
-    <div class="sticky top-0" :style="{ 'background-color': get_bg_color }">
+    <div class="sticky top-0 z-10" :style="{ 'background-color': get_bg_color }">
         <nav class="p-0 m-0">
             <div class="w-full p-3 flex justify-between">
                 <div class="flex gap-2">
