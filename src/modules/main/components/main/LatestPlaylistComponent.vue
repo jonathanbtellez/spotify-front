@@ -4,7 +4,7 @@
     </div>
     <div class="grid md:grid-cols-2 gap-5 lg:grid-cols-3 p-4 mt-4">
         <div class="flex rounded-lg bg-neutral-300 hover:bg-opacity-30 bg-opacity-20 w-full group"
-            @mouseover="get_color(list.color)" v-for="list in listsWithColor" :key="list.index" @click="navigateTo(list.id)">
+            @mouseover="set_color(list.color)" v-for="list in listsWithColor" :key="list.index" @click="navigateTo(list.id)">
             <div class="w-1/4">
                 <img :src="list.image.path" class="rounded-s-lg" alt="list image">
             </div>
@@ -45,7 +45,7 @@ export default {
         const { transformTitle } = useHelpers()
 
         onMounted(() => {
-            listsWithColor.value = props.lists.map(list => {
+            listsWithColor.value = props.lists?.map(list => {
                 const newList = {
                     ...list, color: randomColor({
                         luminosity: 'dark',
@@ -68,13 +68,13 @@ export default {
             router.push({ name: 'showPlaylist', params: { id: idPLaylist } })
         }
 
-        const get_color = (color) => {
+        const set_color = (color) => {
             set_bg_color(color)
         }
         return {
             userName,
             greet,
-            get_color,
+            set_color,
             listsWithColor,
             transformTitle,
             navigateTo

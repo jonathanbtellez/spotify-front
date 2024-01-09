@@ -3,13 +3,15 @@
         <nav class="p-0 m-0">
             <div class="w-full p-3 flex justify-between">
                 <div class="flex gap-2">
-                    <button class="rounded-full bg-neutral-950 p-2 opacity-80">
+                    <button class="rounded-full bg-neutral-950 p-2 opacity-80 cursor-pointer disabled:bg-neutral-700 disabled:cursor-not-allowed" @click="router.back()" 
+                    :disabled="router.options.history.state.back === null">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-5 h-5 stroke-2 stroke-neutral-200">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                         </svg>
                     </button>
-                    <button class="rounded-full bg-neutral-950 p-2 opacity-80">
+                    <button class="rounded-full bg-neutral-950 p-2 opacity-80 cursor-pointer disabled:bg-neutral-700 disabled:cursor-not-allowed" @click="router.forward()"
+                        :disabled="router.options.history.state.forward === null">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-5 h-5 stroke-2 stroke-neutral-200">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -54,12 +56,13 @@ export default {
         const router = useRouter()
 
         const { authStatus, logOut } = useAuth()
-        const {get_bg_color} = useMain()
+        const { get_bg_color } = useMain()
 
 
         return {
             authStatus,
             get_bg_color,
+            router,
             on_logout: () => {
                 logOut()
                 router.push({ name: 'login' })

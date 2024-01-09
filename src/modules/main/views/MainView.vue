@@ -1,21 +1,22 @@
 <template >
+    <nav-component />
     <div :style="{ background: gradient }">
         <template v-if="isLoading">
             <div class="w-100 h-20 p-5 flex justify-center">
-                <div class="loader mt-5" >
+                <div class="loader mt-5">
                 </div>
             </div>
         </template>
-        <latest-playlist-component :lists="playlists.lastPlaylist"  v-else/>
+        <latest-playlist-component :lists="lists.lastPlaylist" v-else />
     </div>
     <div class="w-full bg-neutral-900 pb-3">
         <template v-if="isLoading">
             <div class="w-100 h-20 p-5 flex justify-center">
-                <div class="loader mt-5" >
+                <div class="loader mt-5">
                 </div>
             </div>
         </template>
-        <template v-for="list in playlists.playlist" :key="list.id" v-else>
+        <template v-for="list in lists.playlist" :key="list.id" v-else>
             <template v-if="list.playlist.length > 0">
                 <cards-container-component :title="list.name" :lists="list.playlist" />
             </template>
@@ -33,7 +34,8 @@ import MainApi from '@/api/MainApi';
 export default {
     components: {
         'cards-container-component': defineAsyncComponent(() => import(/* webpackChunkName: 'cards container component' */'../components/main/CardsContainerComponent.vue')),
-        'latest-playlist-component': defineAsyncComponent(() => import(/* webpackChunkName: 'latest playlist component' */'../components/main/LatestPlaylistComponent.vue'))
+        'latest-playlist-component': defineAsyncComponent(() => import(/* webpackChunkName: 'latest playlist component' */'../components/main/LatestPlaylistComponent.vue')),
+        'nav-component': defineAsyncComponent(() => import(/* webpackChunkName: 'nav component' */'../components/main/NavComponent.vue')),
     },
 
     setup() {
@@ -41,8 +43,9 @@ export default {
         const { get_bg_color } = useMain()
         const { userToken } = useAuth()
 
-        const playlists = ref({})
+        const playlists = ref(null)
         const isLoading = ref(false)
+
 
         onMounted(async () => {
             getPlaylist()
@@ -63,7 +66,7 @@ export default {
 
         return {
             isLoading,
-            playlists,
+            lists: computed(() => playlists.value ? playlists.value : getPlaylist()),
             userToken,
             gradient: computed(() => 'linear-gradient(' + get_bg_color.value + ', #171717 )'),
         }

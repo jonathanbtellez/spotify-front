@@ -1,5 +1,5 @@
 <template>
-    <div class="flex px-5 pt-10 w-100">
+    <div class="flex px-5 pt-10 pb-3 w-100">
         <div class="w-60 shadow-black">
             <img :src="playlist.image.path" class="rounded-lg shadow-black shadow-2xl" alt="list image">
         </div>
