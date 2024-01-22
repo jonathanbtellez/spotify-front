@@ -1,7 +1,7 @@
 <template >
     <div class="h-full flex flex-col align-items divide-y-4 divide-black font-extrabold text-neutral-400">
         <div class="bg-neutral-900 rounded-xl p-4">
-            <item_component title="Inicio">
+            <item_component title="Inicio" route="home">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6 stroke-2">
                     <path stroke-linecap="round" stroke-linejoin="round"

@@ -8,9 +8,9 @@
             </div>
         </template>
         <playlist-info-component :playlist="playlist" v-else />
-        <PlaylistActionsComponent />
+        <playlist-actions-component :playlist="playlist"/>
     </div>
-    <div class="w-full bg-neutral-900 pb-3">
+    <div class="w-full bg-neutral-900 p-3 ">
         <playlist-songs-component :tracks="playlist.tracks"/>
     </div>
 </template>
